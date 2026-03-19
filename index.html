@@ -1,1079 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>DroxAI — AI Software That Pays For Itself</title>
- <style>
- * { margin: 0; padding: 0; box-sizing: border-box; }
- body { 
- font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
- line-height: 1.6; 
- color: #1a202c; 
- background: #f7fafc;
- }
- .hero { 
- background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #e11d48 100%); 
- color: white; 
- padding: 100px 20px; 
- text-align: center; 
- position: relative;
- overflow: hidden;
- }
- .hero::before {
- content: '';
- position: absolute;
- top: 0; left: 0; right: 0; bottom: 0;
- background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
- radial-gradient(circle at 70% 80%, rgba(225,29,72,0.2) 0%, transparent 40%);
- pointer-events: none;
- }
- .hero h1 { 
- font-size: 3.2rem; 
- margin-bottom: 20px; 
- font-weight: 800;
- line-height: 1.2;
- text-shadow: 0 2px 20px rgba(0,0,0,0.3);
- }
- .hero p { 
- font-size: 1.4rem; 
- margin-bottom: 15px; 
- opacity: 0.95;
- }
- .hero .subtitle {
- font-size: 1.1rem;
- opacity: 0.85;
- margin-bottom: 35px;
- }
- .cta-button { 
- display: inline-block; 
- background: white; 
- color: #4f46e5; 
- padding: 18px 45px; 
- border-radius: 50px; 
- text-decoration: none; 
- font-weight: 700; 
- font-size: 1.2rem;
- box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 30px rgba(99,102,241,0.3);
- transition: all 0.3s ease;
- }
- .cta-button:hover { 
- transform: translateY(-3px); 
- box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 40px rgba(99,102,241,0.5); 
- }
- .cta-button.outline {
- background: transparent;
- border: 2px solid white;
- color: white;
- margin-left: 15px;
- box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 20px rgba(255,255,255,0.2);
- }
- .cta-button.outline:hover {
- background: white;
- color: #4f46e5;
- box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 40px rgba(99,102,241,0.5);
- }
- .container { 
- max-width: 1100px; 
- margin: 0 auto; 
- padding: 60px 20px; 
- }
- .section { 
- margin-bottom: 80px; 
- }
- .section h2 { 
- font-size: 2.5rem; 
- margin-bottom: 20px; 
- background: linear-gradient(135deg, #4f46e5, #e11d48);
- -webkit-background-clip: text;
- -webkit-text-fill-color: transparent;
- background-clip: text;
- text-align: center;
- }
- .section .lead {
- text-align: center;
- font-size: 1.2rem;
- color: #4a5568;
- max-width: 700px;
- margin: 0 auto 40px;
- }
- .products {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
- gap: 30px;
- margin-top: 40px;
- }
- .product-card {
- background: white;
- border-radius: 20px;
- overflow: hidden;
- box-shadow: 0 4px 20px rgba(0,0,0,0.08);
- transition: transform 0.3s ease, box-shadow 0.3s ease;
- }
- .product-card:hover {
- transform: translateY(-8px);
- box-shadow: 0 20px 50px rgba(79,70,229,0.15);
- }
- .product-header {
- background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
- color: white;
- padding: 30px;
- }
- .product-header.alt {
- background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
- }
- .product-header.alt2 {
- background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
- }
- .product-header h3 {
- font-size: 1.6rem;
- margin-bottom: 10px;
- }
- .product-header p {
- opacity: 0.9;
- font-size: 0.95rem;
- }
- .product-body {
- padding: 30px;
- }
- .product-body p {
- color: #4a5568;
- margin-bottom: 20px;
- line-height: 1.7;
- }
- .product-features {
- list-style: none;
- margin-bottom: 25px;
- }
- .product-features li {
- padding: 8px 0;
- color: #2d3748;
- font-size: 0.95rem;
- }
- .product-features li:before {
- content: "✓ ";
- color: #10b981;
- font-weight: bold;
- margin-right: 8px;
- }
- .product-link {
- display: inline-block;
- color: #4f46e5;
- text-decoration: none;
- font-weight: 600;
- font-size: 1rem;
- transition: color 0.2s;
- }
- .product-link:hover {
- color: #7c3aed;
- text-decoration: underline;
- }
- .featured-product {
- border: 3px solid #4f46e5;
- position: relative;
- box-shadow: 0 0 25px rgba(79,70,229,0.2);
- }
- .featured-badge {
- position: absolute;
- top: -12px;
- right: 20px;
- background: linear-gradient(135deg, #f59e0b, #ef4444);
- color: white;
- padding: 6px 18px;
- border-radius: 20px;
- font-weight: 700;
- font-size: 0.8rem;
- box-shadow: 0 4px 15px rgba(239,68,68,0.4);
- }
- .how-it-works {
- background: white;
- padding: 60px 40px;
- border-radius: 20px;
- box-shadow: 0 4px 25px rgba(0,0,0,0.1);
- }
- .step {
- display: flex;
- align-items: start;
- margin-bottom: 40px;
- }
- .step:last-child {
- margin-bottom: 0;
- }
- .step-number {
- background: linear-gradient(135deg, #4f46e5 0%, #e11d48 100%);
- color: white;
- width: 50px;
- height: 50px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-size: 1.5rem;
- font-weight: bold;
- margin-right: 25px;
- flex-shrink: 0;
- box-shadow: 0 4px 15px rgba(79,70,229,0.4);
- }
- .step-content h3 {
- font-size: 1.5rem;
- color: #2d3748;
- margin-bottom: 10px;
- }
- .step-content p {
- color: #4a5568;
- font-size: 1.1rem;
- }
- .pricing { 
- display: grid; 
- grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
- gap: 35px; 
- margin-top: 50px; 
- }
- .price-card { 
- background: white; 
- border: 3px solid #e2e8f0; 
- border-radius: 20px; 
- padding: 45px 35px; 
- text-align: center;
- transition: all 0.3s ease;
- position: relative;
- }
- .price-card:hover {
- border-color: #4f46e5;
- box-shadow: 0 10px 40px rgba(79,70,229,0.2);
- }
- .price-card.featured { 
- background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); 
- color: white; 
- transform: scale(1.05);
- border: none;
- box-shadow: 0 20px 50px rgba(79,70,229,0.4);
- }
- .price-card.featured .badge {
- position: absolute;
- top: -15px;
- right: 20px;
- background: linear-gradient(135deg, #f59e0b, #ef4444);
- color: white;
- padding: 8px 20px;
- border-radius: 25px;
- font-weight: 700;
- font-size: 0.85rem;
- box-shadow: 0 4px 15px rgba(239,68,68,0.4);
- }
- .price-card h3 {
- font-size: 1.8rem;
- margin-bottom: 10px;
- }
- .price-card .tagline {
- font-size: 0.9rem;
- opacity: 0.8;
- margin-bottom: 20px;
- }
- .price { 
- font-size: 3.2rem; 
- font-weight: 800; 
- margin: 15px 0 5px;
- line-height: 1;
- }
- .price span {
- font-size: 1rem;
- font-weight: 400;
- opacity: 0.8;
- }
- .yearly {
- font-size: 0.95rem;
- color: #10b981;
- font-weight: 600;
- margin-bottom: 25px;
- }
- .price-card.featured .yearly {
- color: #6ee7b7;
- }
- .price-card ul { 
- text-align: left; 
- margin: 25px 0; 
- list-style: none; 
- }
- .price-card li { 
- padding: 12px 0; 
- border-bottom: 1px solid rgba(0,0,0,0.08);
- font-size: 1rem;
- }
- .price-card.featured li {
- border-bottom-color: rgba(255,255,255,0.2);
- }
- .price-card li:before { 
- content: "✓ "; 
- color: #10b981; 
- font-weight: bold; 
- margin-right: 10px;
- }
- .price-card.featured li:before {
- color: #6ee7b7;
- }
- .savings-banner {
- background: linear-gradient(135deg, #ecfdf5, #d1fae5);
- border: 2px solid #00ff88;
- border-radius: 15px;
- padding: 25px;
- text-align: center;
- margin-bottom: 40px;
- box-shadow: 0 0 20px rgba(0,255,136,0.15);
- }
- .savings-banner h3 {
- color: #065f46;
- font-size: 1.5rem;
- margin-bottom: 10px;
- }
- .savings-banner p {
- color: #047857;
- font-size: 1.1rem;
- }
- .savings-banner strong {
- color: #059669;
- font-size: 1.3rem;
- }
- .cta-box {
- background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #e11d48 100%);
- padding: 60px 40px;
- border-radius: 20px;
- text-align: center;
- color: white;
- box-shadow: 0 20px 50px rgba(79,70,229,0.4);
- position: relative;
- overflow: hidden;
- }
- .cta-box::before {
- content: '';
- position: absolute;
- top: 0; left: 0; right: 0; bottom: 0;
- background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
- pointer-events: none;
- }
- .cta-box h2 {
- color: white;
- -webkit-text-fill-color: white;
- margin-bottom: 20px;
- }
- .cta-box p {
- font-size: 1.3rem;
- margin-bottom: 35px;
- opacity: 0.95;
- }
- .guarantee {
- display: flex;
- align-items: center;
- justify-content: center;
- gap: 20px;
- margin-top: 30px;
- padding: 20px;
- background: rgba(255,255,255,0.1);
- border-radius: 15px;
- }
- .guarantee-icon {
- font-size: 2.5rem;
- }
- .guarantee-text {
- text-align: left;
- }
- .guarantee-text h4 {
- font-size: 1.1rem;
- margin-bottom: 5px;
- }
- .guarantee-text p {
- font-size: 0.95rem;
- opacity: 0.9;
- margin: 0;
- }
- footer { 
- background: #1e1b4b; 
- color: white; 
- padding: 50px 20px; 
- text-align: center; 
- }
- .footer-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- gap: 40px;
- max-width: 900px;
- margin: 0 auto 40px;
- text-align: left;
- }
- .footer-col h4 {
- color: #a5b4fc;
- margin-bottom: 15px;
- font-size: 1.1rem;
- }
- .footer-col ul {
- list-style: none;
- }
- .footer-col li {
- margin-bottom: 10px;
- }
- .footer-col a {
- color: #e2e8f0;
- text-decoration: none;
- opacity: 0.8;
- transition: all 0.2s;
- }
- .footer-col a:hover {
- opacity: 1;
- color: #a5b4fc;
- }
- footer p {
- opacity: 0.8;
- margin-top: 20px;
- }
- footer a {
- color: #a5b4fc;
- text-decoration: none;
- margin: 0 10px;
- }
- @media (max-width: 768px) {
- .hero h1 { font-size: 2rem; }
- .hero p { font-size: 1.1rem; }
- .section h2 { font-size: 1.8rem; }
- .price { font-size: 2.5rem; }
- .cta-button.outline {
- margin-left: 0;
- margin-top: 15px;
- }
- .price-card.featured {
- transform: none;
- }
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Reply Sprint - AI-Powered Review Responses | DroxAI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #1a202c; 
+            background: #f7fafc;
+        }
+        .hero { 
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #e11d48 100%); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(225,29,72,0.2) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero h1 { 
+            font-size: 3rem; 
+            margin-bottom: 20px; 
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .hero p { 
+            font-size: 1.4rem; 
+            margin-bottom: 30px; 
+            opacity: 0.95;
+        }
+        .cta-button { 
+            display: inline-block; 
+            background: white; 
+            color: #4f46e5; 
+            padding: 18px 45px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 30px rgba(99,102,241,0.3);
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 40px rgba(99,102,241,0.5); 
+        }
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+        }
+        .section { 
+            margin-bottom: 80px; 
+        }
+        .section h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 30px; 
+            background: linear-gradient(135deg, #4f46e5, #e11d48);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        .features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px;
+        }
+        .feature { 
+            background: white; 
+            padding: 35px; 
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(79,70,229,0.15);
+        }
+        .feature h3 { 
+            color: #4f46e5; 
+            margin-bottom: 15px; 
+            font-size: 1.4rem;
+        }
+        .feature p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        .how-it-works {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+        }
+        .step {
+            display: flex;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #4f46e5 0%, #e11d48 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(79,70,229,0.4);
+        }
+        .step-content h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        .step-content p {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+        .pricing { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 35px; 
+            margin-top: 50px; 
+        }
+        .price-card { 
+            background: white; 
+            border: 3px solid #e2e8f0; 
+            border-radius: 20px; 
+            padding: 45px 35px; 
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .price-card:hover {
+            border-color: #4f46e5;
+            box-shadow: 0 10px 40px rgba(79,70,229,0.2);
+        }
+        .price-card.featured { 
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); 
+            color: white; 
+            transform: scale(1.05);
+            border: none;
+            box-shadow: 0 20px 50px rgba(79,70,229,0.4);
+        }
+        .price-card.featured .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+        }
+        .price-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .price { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            margin: 25px 0;
+            line-height: 1;
+        }
+        .price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        .price-card ul { 
+            text-align: left; 
+            margin: 30px 0; 
+            list-style: none; 
+        }
+        .price-card li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-size: 1.05rem;
+        }
+        .price-card.featured li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+        .price-card li:before { 
+            content: "✓ "; 
+            color: #10b981; 
+            font-weight: bold; 
+            margin-right: 10px;
+        }
+        .price-card.featured li:before {
+            color: #6ee7b7;
+        }
+        .cta-box {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #e11d48 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 50px rgba(79,70,229,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .cta-box h2 {
+            color: white;
+            -webkit-text-fill-color: white;
+            margin-bottom: 20px;
+        }
+        .cta-box p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+        }
+        footer { 
+            background: #1e1b4b; 
+            color: white; 
+            padding: 40px 20px; 
+            text-align: center; 
+        }
+        footer a {
+            color: #a5b4fc;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: #c7d2fe;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .section h2 { font-size: 1.8rem; }
+            .price { font-size: 2.5rem; }
+            .price-card.featured {
+                transform: none;
+            }
+        }
+    </style>
 </head>
 <body>
- <div class="hero">
- <h1>AI Software That Pays For Itself</h1>
- <p>Self-hosted AI tools that save you $7,000+ per year</p>
- <p class="subtitle">Install on your infrastructure. Own your data. Cancel anytime.</p>
- <div>
- <a href="#products" class="cta-button">Explore Products</a>
- <a href="#pricing" class="cta-button outline">See Pricing</a>
- </div>
- </div>
+    <div class="hero">
+        <h1>Stop Spending Hours on Google Reviews</h1>
+        <p>Get 50 AI-Powered, Personalized Review Responses in 24 Hours</p>
+        <a href="mailto:droxai25@outlook.com?subject=Free Review Reply Samples&body=Hi, I'd like to try the free samples!%0D%0A%0D%0AHere are 5 reviews from my business:%0D%0A%0D%0A1. (Rating: __/5) Review text here...%0D%0A2. (Rating: __/5) Review text here...%0D%0A3. (Rating: __/5) Review text here...%0D%0A4. (Rating: __/5) Review text here...%0D%0A5. (Rating: __/5) Review text here...%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0APhone:" 
+           class="cta-button">
+            Get 5 Free Samples →
+        </a>
+    </div>
 
- <div class="container">
- <div class="savings-banner">
- <h3>💰 The Math Is Simple</h3>
- <p>At $20/hour, businesses spend <strong>7+ hours weekly</strong> on review responses.<br>That's <strong>$7,280/year</strong> in labor costs — or <strong>$990/year</strong> with Review Reply Sprint.<br><strong style="color:#065f46">Built right. No refunds needed.</strong></p>
- </div>
+    <div class="container">
+        <div class="section">
+            <h2>How It Works</h2>
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Send Your Reviews</h3>
+                        <p>Email us 5 Google reviews (any rating - good, bad, or neutral). We'll analyze your business voice.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get Free Samples</h3>
+                        <p>Within 24 hours, receive 5 personalized responses written in your unique voice. No generic templates.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Love Them? Subscribe</h3>
+                        <p>If the quality impresses you, subscribe to get 50+ professionally crafted replies every month for just $199.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
- <div class="section" id="products">
- <h2>Our Products</h2>
- <p class="lead">Self-hosted AI software that runs on your machines. No cloud lock-in. No per-seat fees. Just results.</p>
- <div class="products">
- <div class="product-card featured-product">
- <div class="featured-badge">FLAGSHIP</div>
- <div class="product-header">
- <h3>📝 Review Reply Sprint</h3>
- <p>AI-Powered Review Response System</p>
- </div>
- <div class="product-body">
- <p>Generate personalized, brand-aligned responses to Google reviews in seconds. Learns your voice. Handles negative reviews with empathy. HIPAA-safe for medical practices.</p>
- <ul class="product-features">
- <li>Unlimited review responses</li>
- <li>Custom brand voice training</li>
- <li>Negative review handling</li>
- <li>Compliance safeguards</li>
- <li>PDF + Word export</li>
- </ul>
- <a href="#pricing" class="product-link">View Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header alt">
- <h3>🐸 TOAD</h3>
- <p>AI Code Generation Agent</p>
- </div>
- <div class="product-body">
- <p>Production-grade code generation with a 92.83/100 quality score. Outperforms Copilot by 37 points. Self-hosted for complete code privacy.</p>
- <ul class="product-features">
- <li>Multi-language support</li>
- <li>Context-aware generation</li>
- <li>Full test coverage</li>
- <li>Documentation included</li>
- <li>No code leaves your machine</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=TOAD Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header alt2">
- <h3>⚡ DroxCLI</h3>
- <p>Natural Language Coding Assistant</p>
- </div>
- <div class="product-body">
- <p>Describe what you want in plain English. DroxCLI writes the code, runs safety checks, and handles rollbacks. Built-in Ollama integration.</p>
- <ul class="product-features">
- <li>Natural language to code</li>
- <li>Automatic rollback</li>
- <li>Safety validations</li>
- <li>Ollama/local LLM support</li>
- <li>Git integration</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=DroxCLI Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);">
- <h3>🎩 DeepHat</h3>
- <p>Cybersecurity AI Model</p>
- </div>
- <div class="product-body">
- <p>7B parameter custom AI model trained for cybersecurity, penetration testing, and code analysis. Runs locally in GGUF format. Your data never touches the cloud.</p>
- <ul class="product-features">
- <li>7B parameter custom model</li>
- <li>Penetration testing assistance</li>
- <li>Code security analysis</li>
- <li>GGUF format - runs locally</li>
- <li>No cloud dependencies</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=DeepHat Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
- <h3>🏗️ ProConstruct</h3>
- <p>AI for Construction Trades</p>
- </div>
- <div class="product-body">
- <p>AI-powered tools for contractors and construction professionals. Estimates, project management, compliance tracking — all self-hosted.</p>
- <ul class="product-features">
- <li>Automated quote generation</li>
- <li>Project timeline management</li>
- <li>Trade-specific compliance</li>
- <li>Client communication tools</li>
- <li>Material cost estimation</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=ProConstruct Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
- <h3>📧 AutoCampaigns</h3>
- <p>AI Marketing Automation</p>
- </div>
- <div class="product-body">
- <p>Self-hosted marketing automation that learns your brand voice. Email campaigns, SMS, social scheduling — all without monthly SaaS fees.</p>
- <ul class="product-features">
- <li>AI-generated campaign content</li>
- <li>Multi-channel automation</li>
- <li>Audience segmentation</li>
- <li>Performance analytics</li>
- <li>No per-contact fees</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=AutoCampaigns Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">
- <h3>⛓️ ChainSynth</h3>
- <p>Supply Chain Simulation Platform</p>
- </div>
- <div class="product-body">
- <p>Enterprise supply chain simulation with ERP integration (SAP, Oracle). Predict disruptions 5-10 minutes ahead with ML-powered "what if" scenarios.</p>
- <ul class="product-features">
- <li>SAP/Oracle connector</li>
- <li>Predictive failure detection</li>
- <li>Synthetic scenario modeling</li>
- <li>SHAP explanations</li>
- <li>Enterprise deployment</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=ChainSynth Enterprise Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- 
- <div class="product-card">
- <div class="product-header" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);">
- <h3>🔥 Chimera Autarch</h3>
- <p>AI Orchestration Platform</p>
- </div>
- <div class="product-body">
- <p>Self-evolving AI orchestration with federated learning, multi-agent swarms, and hot code reload. Coordinates your entire AI infrastructure.</p>
- <ul class="product-features">
- <li>AI-powered code generation</li>
- <li>Time-series anomaly detection</li>
- <li>Multi-agent swarm coordination</li>
- <li>Zero-trust security (JWT/RBAC)</li>
- <li>Hot code reload — zero downtime</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Chimera Autarch Enterprise Inquiry" class="product-link">Contact for Pricing →</a>
- </div>
- </div>
- </div>
- </div>
+        <div class="section">
+            <h2>What Makes Us Different</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>✨ Sounds Like YOU</h3>
+                    <p>Not generic templates. Our AI learns your unique business voice and personality from your sample reviews, creating authentic responses your customers will trust.</p>
+                </div>
+                <div class="feature">
+                    <h3>⚡ Lightning Fast</h3>
+                    <p>24-hour guaranteed turnaround. Send reviews Monday morning, post perfect replies Tuesday morning. No more review response backlog.</p>
+                </div>
+                <div class="feature">
+                    <h3>🛡️ Compliance Built-In</h3>
+                    <p>HIPAA-safe for medical practices. FTC-compliant for all businesses. We never include risky language or violate industry regulations.</p>
+                </div>
+                <div class="feature">
+                    <h3>😊 Perfect for Negatives</h3>
+                    <p>Our AI handles 1-star reviews better than most humans. Empathetic, professional, never defensive. Turn angry customers into second chances.</p>
+                </div>
+                <div class="feature">
+                    <h3>📦 Ready to Post</h3>
+                    <p>Delivered as PDF and editable Word doc. Simply copy and paste into Google. Edit anything you want before posting.</p>
+                </div>
+                <div class="feature">
+                    <h3>💰 Saves You Money</h3>
+                    <p>Stop paying VAs $15/hour to write mediocre responses. Stop wasting your own time at $100+/hour. Get professional quality for a fraction of the cost.</p>
+                </div>
+            </div>
+        </div>
 
- <div class="section">
- <h2>How Licensing Works</h2>
- <div class="how-it-works">
- <div class="step">
- <div class="step-number">1</div>
- <div class="step-content">
- <h3>Choose Your Plan</h3>
- <p>Pick monthly or annual billing. Annual saves you 2 months. Cancel anytime — no contracts, no surprises.</p>
- </div>
- </div>
- <div class="step">
- <div class="step-number">2</div>
- <div class="step-content">
- <h3>Download & Install</h3>
- <p>Get your license key and installer. Runs on Windows, macOS, or Linux. Self-hosted means your data never leaves your network.</p>
- </div>
- </div>
- <div class="step">
- <div class="step-number">3</div>
- <div class="step-content">
- <h3>Generate Responses</h3>
- <p>Start saving 7+ hours per week immediately. Updates and support included for the life of your subscription.</p>
- </div>
- </div>
- </div>
- </div>
+        <div class="section">
+            <h2>Pricing Plans</h2>
+            <div class="pricing">
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <div class="price">$199<span>/mo</span></div>
+                    <ul>
+                        <li>Up to 50 reviews per month</li>
+                        <li>24-hour turnaround</li>
+                        <li>PDF + Word document delivery</li>
+                        <li>Compliance safeguards included</li>
+                        <li>Email support</li>
+                        <li>Cancel anytime - no contract</li>
+                    </ul>
+                    <a href="mailto:droxai25@outlook.com?subject=Sign Up - Starter Plan ($199/month)&body=Hi, I'd like to subscribe to the Starter Plan.%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:" 
+                       class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+                        Get Started
+                    </a>
+                </div>
+                
+                <div class="price-card featured">
+                    <div class="badge">MOST POPULAR</div>
+                    <h3>Pro</h3>
+                    <div class="price">$399<span>/mo</span></div>
+                    <ul>
+                        <li>Up to 200 reviews per month</li>
+                        <li>12-hour priority turnaround</li>
+                        <li>Custom brand voice training</li>
+                        <li>Direct phone support</li>
+                        <li>Monthly strategy call</li>
+                        <li>Multi-location support</li>
+                    </ul>
+                    <a href="mailto:droxai25@outlook.com?subject=Sign Up - Pro Plan ($399/month)&body=Hi, I'd like to subscribe to the Pro Plan.%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:" 
+                       class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+                        Choose Pro
+                    </a>
+                </div>
+                
+                <div class="price-card">
+                    <h3>Scale</h3>
+                    <div class="price">$699<span>/mo</span></div>
+                    <ul>
+                        <li>Unlimited reviews</li>
+                        <li>6-hour rush turnaround</li>
+                        <li>Dedicated account manager</li>
+                        <li>API access for integration</li>
+                        <li>White-label options available</li>
+                        <li>Franchise/multi-location ready</li>
+                    </ul>
+                    <a href="mailto:droxai25@outlook.com?subject=Scale Plan Inquiry&body=Hi, I'd like to learn more about the Scale Plan.%0D%0A%0D%0ABusiness Name:%0D%0ANumber of Locations:%0D%0AMonthly Review Volume:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:" 
+                       class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
 
- <div class="section" id="pricing">
- <h2>Review Reply Sprint Pricing</h2>
- <p class="lead">Self-hosted licensing. Unlimited usage. Your data, your infrastructure.</p>
- <div class="pricing">
- <div class="price-card">
- <h3>Starter</h3>
- <p class="tagline">Perfect for small businesses</p>
- <div class="price">$99<span>/mo</span></div>
- <p class="yearly">or $990/year (2 months free)</p>
- <ul>
- <li>Single location</li>
- <li>Unlimited review responses</li>
- <li>Standard brand voice training</li>
- <li>Email support</li>
- <li>Quarterly updates</li>
- <li>Self-hosted deployment</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - Starter Plan" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Get Started
- </a>
- </div>
- 
- <div class="price-card featured">
- <div class="badge">MOST POPULAR</div>
- <h3>Business</h3>
- <p class="tagline">For agencies & multi-location</p>
- <div class="price">$199<span>/mo</span></div>
- <p class="yearly">or $1,990/year (2 months free)</p>
- <ul>
- <li>Up to 5 locations</li>
- <li>Unlimited review responses</li>
- <li>Advanced brand voice training</li>
- <li>Priority email support</li>
- <li>Monthly updates</li>
- <li>White-label options</li>
- <li>API access</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - Business Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
- Choose Business
- </a>
- </div>
- 
- <div class="price-card">
- <h3>Enterprise</h3>
- <p class="tagline">For franchises & resellers</p>
- <div class="price">$399<span>/mo</span></div>
- <p class="yearly">or $3,990/year (2 months free)</p>
- <ul>
- <li>Unlimited locations</li>
- <li>Unlimited review responses</li>
- <li>Dedicated account manager</li>
- <li>Phone + email support</li>
- <li>Weekly updates</li>
- <li>Full white-label rights</li>
- <li>Custom integrations</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Enterprise Plan Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Contact Sales
- </a>
- </div>
- </div>
- </div>
+        <div class="section">
+            <div class="cta-box">
+                <h2>Ready to Transform Your Reviews?</h2>
+                <p>
+                    Send us 5 reviews and see the quality for yourself.<br>
+                    No credit card required for samples. No obligation.
+                </p>
+                <a href="mailto:droxai25@outlook.com?subject=Free Review Reply Samples&body=Hi, I'd like to try the free samples!%0D%0A%0D%0AHere are 5 reviews from my business:%0D%0A%0D%0A1. (Rating: __/5) Review text here...%0D%0A2. (Rating: __/5) Review text here...%0D%0A3. (Rating: __/5) Review text here...%0D%0A4. (Rating: __/5) Review text here...%0D%0A5. (Rating: __/5) Review text here...%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0APhone:" 
+                   class="cta-button" style="padding:20px 50px;font-size:1.3rem">
+                    Get Your Free Samples Now →
+                </a>
+            </div>
+        </div>
+    </div>
 
- <div class="section">
- <h2>TOAD Pricing</h2>
- <p class="lead">Self-hosted code generation. Outperforms Copilot. Your code never leaves your machine.</p>
- <div class="pricing">
- <div class="price-card">
- <h3>Solo</h3>
- <p class="tagline">Individual developer</p>
- <div class="price">$49<span>/mo</span></div>
- <p class="yearly">or $490/year (2 months free)</p>
- <ul>
- <li>1 developer</li>
- <li>Unlimited generations</li>
- <li>Multi-language support</li>
- <li>Auto-test & rollback</li>
- <li>Email support</li>
- <li>Quarterly updates</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - TOAD Solo Plan" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Get Started
- </a>
- </div>
- 
- <div class="price-card featured">
- <div class="badge">MOST POPULAR</div>
- <h3>Team</h3>
- <p class="tagline">Up to 5 developers</p>
- <div class="price">$129<span>/mo</span></div>
- <p class="yearly">or $1,290/year (2 months free)</p>
- <ul>
- <li>Up to 5 developers</li>
- <li>Unlimited generations</li>
- <li>Priority code generation</li>
- <li>Team collaboration tools</li>
- <li>Priority email support</li>
- <li>Monthly updates</li>
- <li>Custom model training</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - TOAD Team Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
- Choose Team
- </a>
- </div>
- 
- <div class="price-card">
- <h3>Enterprise</h3>
- <p class="tagline">Unlimited developers</p>
- <div class="price">$299<span>/mo</span></div>
- <p class="yearly">or $2,990/year (2 months free)</p>
- <ul>
- <li>Unlimited developers</li>
- <li>Unlimited generations</li>
- <li>Dedicated support</li>
- <li>SSO integration</li>
- <li>Weekly updates</li>
- <li>Custom model training</li>
- <li>API access</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=TOAD Enterprise Plan Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Contact Sales
- </a>
- </div>
- </div>
- </div>
-
- <div class="section">
- <h2>DroxCLI Pricing</h2>
- <p class="lead">Natural language to code. Built-in safety. Self-hosted.</p>
- <div class="pricing">
- <div class="price-card">
- <h3>Individual</h3>
- <p class="tagline">Solo developer</p>
- <div class="price">$29<span>/mo</span></div>
- <p class="yearly">or $290/year (2 months free)</p>
- <ul>
- <li>1 user</li>
- <li>Unlimited commands</li>
- <li>Automatic rollback</li>
- <li>Safety validations</li>
- <li>Email support</li>
- <li>Quarterly updates</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - DroxCLI Individual Plan" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Get Started
- </a>
- </div>
- 
- <div class="price-card featured">
- <div class="badge">MOST POPULAR</div>
- <h3>Team</h3>
- <p class="tagline">Up to 10 developers</p>
- <div class="price">$79<span>/mo</span></div>
- <p class="yearly">or $790/year (2 months free)</p>
- <ul>
- <li>Up to 10 users</li>
- <li>Unlimited commands</li>
- <li>Ollama/local LLM support</li>
- <li>Git integration</li>
- <li>Priority email support</li>
- <li>Monthly updates</li>
- <li>Shared command history</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - DroxCLI Team Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
- Choose Team
- </a>
- </div>
- 
- <div class="price-card">
- <h3>Enterprise</h3>
- <p class="tagline">Unlimited developers</p>
- <div class="price">$149<span>/mo</span></div>
- <p class="yearly">or $1,490/year (2 months free)</p>
- <ul>
- <li>Unlimited users</li>
- <li>Unlimited commands</li>
- <li>Custom integrations</li>
- <li>SSO integration</li>
- <li>Phone + email support</li>
- <li>Weekly updates</li>
- <li>Custom LLM support</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=DroxCLI Enterprise Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Contact Sales
- </a>
- </div>
- </div>
- </div>
-
- <div class="section">
- <h2>ProConstruct Pricing</h2>
- <p class="lead">AI tools for contractors and construction trades. Built for the field.</p>
- <div class="pricing">
- <div class="price-card">
- <h3>Trade Pro</h3>
- <p class="tagline">Individual contractor</p>
- <div class="price">$149<span>/mo</span></div>
- <p class="yearly">or $1,490/year (2 months free)</p>
- <ul>
- <li>1 user</li>
- <li>Unlimited quotes</li>
- <li>Material estimation</li>
- <li>Project timelines</li>
- <li>Email support</li>
- <li>Quarterly updates</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - ProConstruct Trade Pro" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Get Started
- </a>
- </div>
- 
- <div class="price-card featured">
- <div class="badge">MOST POPULAR</div>
- <h3>Crew</h3>
- <p class="tagline">Small construction business</p>
- <div class="price">$299<span>/mo</span></div>
- <p class="yearly">or $2,990/year (2 months free)</p>
- <ul>
- <li>Up to 5 users</li>
- <li>Unlimited quotes</li>
- <li>Client management</li>
- <li>Compliance tracking</li>
- <li>Priority email support</li>
- <li>Monthly updates</li>
- <li>Mobile app access</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - ProConstruct Crew Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
- Choose Crew
- </a>
- </div>
- 
- <div class="price-card">
- <h3>Enterprise</h3>
- <p class="tagline">Multi-crew operations</p>
- <div class="price">$499<span>/mo</span></div>
- <p class="yearly">or $4,990/year (2 months free)</p>
- <ul>
- <li>Unlimited users</li>
- <li>Unlimited quotes</li>
- <li>Multi-location support</li>
- <li>Dedicated account manager</li>
- <li>Phone + email support</li>
- <li>Weekly updates</li>
- <li>API access</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=ProConstruct Enterprise Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Contact Sales
- </a>
- </div>
- </div>
- </div>
-
- <div class="section">
- <h2>AutoCampaigns Pricing</h2>
- <p class="lead">Self-hosted marketing automation. No per-contact fees. No limits.</p>
- <div class="pricing">
- <div class="price-card">
- <h3>Starter</h3>
- <p class="tagline">Small business</p>
- <div class="price">$79<span>/mo</span></div>
- <p class="yearly">or $790/year (2 months free)</p>
- <ul>
- <li>1 user</li>
- <li>Unlimited contacts</li>
- <li>Email campaigns</li>
- <li>Basic automation</li>
- <li>Email support</li>
- <li>Quarterly updates</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - AutoCampaigns Starter" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Get Started
- </a>
- </div>
- 
- <div class="price-card featured">
- <div class="badge">MOST POPULAR</div>
- <h3>Growth</h3>
- <p class="tagline">Growing business</p>
- <div class="price">$149<span>/mo</span></div>
- <p class="yearly">or $1,490/year (2 months free)</p>
- <ul>
- <li>Up to 5 users</li>
- <li>Unlimited contacts</li>
- <li>Email + SMS campaigns</li>
- <li>Advanced automation</li>
- <li>Priority email support</li>
- <li>Monthly updates</li>
- <li>Social scheduling</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - AutoCampaigns Growth" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
- Choose Growth
- </a>
- </div>
- 
- <div class="price-card">
- <h3>Agency</h3>
- <p class="tagline">Marketing agency</p>
- <div class="price">$299<span>/mo</span></div>
- <p class="yearly">or $2,990/year (2 months free)</p>
- <ul>
- <li>Unlimited users</li>
- <li>Unlimited contacts</li>
- <li>Multi-client support</li>
- <li>White-label options</li>
- <li>Phone + email support</li>
- <li>Weekly updates</li>
- <li>API access</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=AutoCampaigns Agency Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
- Contact Sales
- </a>
- </div>
- </div>
- </div>
-
- <div class="section">
- <h2>Enterprise Solutions</h2>
- <p class="lead">Serious infrastructure for serious operations. Contact us for custom pricing.</p>
- <div style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
- <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
- <div>
- <div style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 25px; border-radius: 15px;">
- <h3>⛓️ ChainSynth</h3>
- <p style="opacity: 0.9; margin-top: 8px;">Supply Chain Simulation Platform</p>
- </div>
- <div style="padding: 20px 0;">
- <p style="color: #4a5568; margin-bottom: 15px;">Enterprise-grade supply chain simulation with SAP/Oracle integration.</p>
- <ul style="list-style: none; color: #2d3748;">
- <li>✓ Predictive failure detection</li>
- <li>✓ Synthetic scenario modeling</li>
- <li>✓ SHAP explanations</li>
- <li>✓ ERP integration</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=ChainSynth Enterprise Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem; display: inline-block;">
- Contact for Pricing
- </a>
- </div>
- </div>
- 
- <div>
- <div style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: white; padding: 25px; border-radius: 15px;">
- <h3>🎩 DeepHat</h3>
- <p style="opacity: 0.9; margin-top: 8px;">Cybersecurity AI Model</p>
- </div>
- <div style="padding: 20px 0;">
- <p style="color: #4a5568; margin-bottom: 15px;">7B parameter model for penetration testing and security analysis.</p>
- <ul style="list-style: none; color: #2d3748;">
- <li>✓ Penetration testing</li>
- <li>✓ Code security analysis</li>
- <li>✓ Local GGUF deployment</li>
- <li>✓ No cloud dependencies</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=DeepHat Enterprise Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem; display: inline-block;">
- Contact for Pricing
- </a>
- </div>
- </div>
- 
- <div>
- <div style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: white; padding: 25px; border-radius: 15px;">
- <h3>🔥 Chimera Autarch</h3>
- <p style="opacity: 0.9; margin-top: 8px;">AI Orchestration Platform</p>
- </div>
- <div style="padding: 20px 0;">
- <p style="color: #4a5568; margin-bottom: 15px;">Self-evolving AI orchestration with federated learning and multi-agent swarms.</p>
- <ul style="list-style: none; color: #2d3748;">
- <li>✓ AI code generation</li>
- <li>✓ Anomaly detection</li>
- <li>✓ Multi-agent coordination</li>
- <li>✓ Hot code reload</li>
- </ul>
- <a href="mailto:droxai25@outlook.com?subject=Chimera Autarch Enterprise Inquiry" class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem; display: inline-block;">
- Contact for Pricing
- </a>
- </div>
- </div>
- </div>
- </div>
- </div>
-
- <div class="section">
- <div class="cta-box">
- <h2>Ready to Transform Your Business?</h2>
- <p>
- AI software that pays for itself.<br>
- Self-hosted. No lock-in. Real results.
- </p>
- <a href="mailto:droxai25@outlook.com?subject=Inquiry - DroxAI Products&body=Hi DroxAI Team,%0D%0A%0D%0AI'm interested in learning more about your AI products.%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:%0D%0A%0D%0AThanks!" class="cta-button" style="padding:20px 50px;font-size:1.3rem">
- Get in Touch →
- </a>
- <div class="guarantee">
- <div class="guarantee-icon">✅</div>
- <div class="guarantee-text">
- <h4>Battle-Tested & Production-Ready</h4>
- <p>Every product is tested extensively before release. We ship when it's right.</p>
- </div>
- </div>
- </div>
- </div>
- </div>
-
- <footer>
- <div class="footer-grid">
- <div class="footer-col">
- <h4>Products</h4>
- <ul>
- <li><a href="#">Review Reply Sprint</a></li>
- <li><a href="#">TOAD Code Agent</a></li>
- <li><a href="#">DroxCLI</a></li>
- <li><a href="#">DeepHat</a></li>
- <li><a href="#">ProConstruct</a></li>
- <li><a href="#">AutoCampaigns</a></li>
- <li><a href="#">ChainSynth</a></li>
- <li><a href="#">Chimera Autarch</a></li>
- </ul>
- </div>
- <div class="footer-col">
- <h4>Company</h4>
- <ul>
- <li><a href="mailto:droxai25@outlook.com">Contact</a></li>
- <li><a href="#pricing">Pricing</a></li>
- </ul>
- </div>
- <div class="footer-col">
- <h4>Legal</h4>
- <ul>
- <li><a href="/privacy.html">Privacy Policy</a></li>
- <li><a href="/terms.html">Terms of Service</a></li>
- <li><a href="/refund.html">Refund Policy</a></li>
- </ul>
- </div>
- </div>
- <p style="font-size:1.1rem;margin-bottom:15px">&copy; 2025 DroxAI LLC. All rights reserved.</p>
- <p>Self-hosted AI software that pays for itself.</p>
- </footer>
+    <footer>
+        <p style="font-size:1.1rem;margin-bottom:15px">&copy; 2025 DroxAI LLC. All rights reserved.</p>
+        <p>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/refund.html">Refund Policy</a>
+        </p>
+        <p style="margin-top:20px;opacity:0.8">
+            Questions? Email us: <a href="mailto:droxai25@outlook.com">droxai25@outlook.com</a>
+        </p>
+    </footer>
 </body>
 </html>
