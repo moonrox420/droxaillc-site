@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Reply Sprint - AI-Powered Review Responses | DroxAI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: #1a202c; 
+            background: #f7fafc;
+        }
+        .hero { 
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #e11d48 100%); 
+            color: white; 
+            padding: 80px 20px; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(225,29,72,0.2) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero h1 { 
+            font-size: 3rem; 
+            margin-bottom: 20px; 
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .hero p { 
+            font-size: 1.4rem; 
+            margin-bottom: 30px; 
+            opacity: 0.95;
+        }
+        .cta-button { 
+            display: inline-block; 
+            background: white; 
+            color: #4f46e5; 
+            padding: 18px 45px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 30px rgba(99,102,241,0.3);
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 40px rgba(99,102,241,0.5); 
+        }
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 60px 20px; 
+        }
+        .section { 
+            margin-bottom: 80px; 
+        }
+        .section h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 30px; 
+            background: linear-gradient(135deg, #4f46e5, #e11d48);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+        }
+        .features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px;
+        }
+        .feature { 
+            background: white; 
+            padding: 35px; 
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(79,70,229,0.15);
+        }
+        .feature h3 { 
+            color: #4f46e5; 
+            margin-bottom: 15px; 
+            font-size: 1.4rem;
+        }
+        .feature p {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        .how-it-works {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+        }
+        .step {
+            display: flex;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #4f46e5 0%, #e11d48 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(79,70,229,0.4);
+        }
+        .step-content h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        .step-content p {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+        .pricing { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 35px; 
+            margin-top: 50px; 
+        }
+        .price-card { 
+            background: white; 
+            border: 3px solid #e2e8f0; 
+            border-radius: 20px; 
+            padding: 45px 35px; 
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .price-card:hover {
+            border-color: #4f46e5;
+            box-shadow: 0 10px 40px rgba(79,70,229,0.2);
+        }
+        .price-card.featured { 
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); 
+            color: white; 
+            transform: scale(1.05);
+            border: none;
+            box-shadow: 0 20px 50px rgba(79,70,229,0.4);
+        }
+        .price-card.featured .badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(239,68,68,0.4);
+        }
+        .price-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .price { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            margin: 25px 0;
+            line-height: 1;
+        }
+        .price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        .price-card ul { 
+            text-align: left; 
+            margin: 30px 0; 
+            list-style: none; 
+        }
+        .price-card li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            font-size: 1.05rem;
+        }
+        .price-card.featured li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+        .price-card li:before { 
+            content: "✓ "; 
+            color: #10b981; 
+            font-weight: bold; 
+            margin-right: 10px;
+        }
+        .price-card.featured li:before {
+            color: #6ee7b7;
+        }
+        footer { 
+            background: #1e1b4b; 
+            color: white; 
+            padding: 40px 20px; 
+            text-align: center; 
+        }
+        footer a {
+            color: #a5b4fc;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.2s;
+        }
+        footer a:hover {
+            color: #c7d2fe;
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.1rem; }
+            .section h2 { font-size: 1.8rem; }
+            .price { font-size: 2.5rem; }
+            .price-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Stop Spending Hours on Google Reviews</h1>
+        <p>Get 50 AI-Powered, Personalized Review Responses in 24 Hours</p>
+        <a href="mailto:droxai25@outlook.com?subject=Free Review Reply Samples&body=Hi, I'd like to try the free samples!%0D%0A%0D%0AHere are 5 reviews from my business:%0D%0A%0D%0A1. (Rating: __/5) Review text here...%0D%0A2. (Rating: __/5) Review text here...%0D%0A3. (Rating: __/5) Review text here...%0D%0A4. (Rating: __/5) Review text here...%0D%0A5. (Rating: __/5) Review text here...%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0APhone:" 
+           class="cta-button">
+            Get 5 Free Samples →
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>How It Works</h2>
+            <div class="how-it-works">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Send Your Reviews</h3>
+                        <p>Email us 5 Google reviews (any rating - good, bad, or neutral). We'll analyze your business voice.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get Free Samples</h3>
+                        <p>Within 24 hours, receive 5 personalized responses written in your unique voice. No generic templates.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Love Them? Subscribe</h3>
+                        <p>If the quality impresses you, subscribe to get 50+ professionally crafted replies every month for just $199.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What Makes Us Different</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>✨ Sounds Like YOU</h3>
+                    <p>Not generic templates. Our AI learns your unique business voice and personality from your sample reviews, creating authentic responses your customers will trust.</p>
+                </div>
+                <div class="feature">
+                    <h3>⚡ Lightning Fast</h3>
+                    <p>24-hour guaranteed turnaround. Send reviews Monday morning, post perfect replies Tuesday morning. No more review response backlog.</p>
+                </div>
+                <div class="feature">
+                    <h3>🛡️ Compliance Built-In</h3>
+                    <p>HIPAA-safe for medical practices. FTC-compliant for all businesses. We never include risky language or violate industry regulations.</p>
+                </div>
+                <div class="feature">
+                    <h3>😊 Perfect for Negatives</h3>
+                    <p>Our AI handles 1-star reviews better than most humans. Empathetic, professional, never defensive. Turn angry customers into second chances.</p>
+                </div>
+                <div class="feature">
+                    <h3>📦 Ready to Post</h3>
+                    <p>Delivered as PDF and editable Word doc. Simply copy and paste into Google. Edit anything you want before posting.</p>
+                </div>
+                <div class="feature">
+                    <h3>💰 Saves You Money</h3>
+                    <p>Stop paying VAs $15/hour to write mediocre responses. Stop wasting your own time at $100+/hour. Get professional quality for a fraction of the cost.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Pricing Plans</h2>
+            <div class="pricing">
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <div class="price">$199<span>/mo</span></div>
+                    <ul>
+                        <li>Up to 50 reviews per month</li>
+                        <li>24-hour turnaround</li>
+                        <li>PDF + Word document delivery</li>
+                        <li>Compliance safeguards included</li>
+                        <li>Email support</li>
+                        <li>Cancel anytime - no contract</li>
+                    </ul>
+                    <a href="mailto:droxai25@outlook.com?subject=Sign Up - Starter Plan ($199/month)&body=Hi, I'd like to subscribe to the Starter Plan.%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:" 
+                       class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+                        Get Started
+                    </a>
+                </div>
+                
+                <div class="price-card featured">
+                    <div class="badge">MOST POPULAR</div>
+                    <h3>Pro</h3>
+                    <div class="price">$399<span>/mo</span></div>
+                    <ul>
+                        <li>Up to 200 reviews per month</li>
+                        <li>12-hour priority turnaround</li>
+                        <li>Custom brand voice training</li>
+                        <li>Direct phone support</li>
+                        <li>Monthly strategy call</li>
+                        <li>Multi-location support</li>
+                    </ul>
+                    <a href="mailto:droxai25@outlook.com?subject=Sign Up - Pro Plan ($399/month)&body=Hi, I'd like to subscribe to the Pro Plan.%0D%0A%0D%0ABusiness Name:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:" 
+                       class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+                        Choose Pro
+                    </a>
+                </div>
+                
+                <div class="price-card">
+                    <h3>Scale</h3>
+                    <div class="price">$699<span>/mo</span></div>
+                    <ul>
+                        <li>Unlimited reviews</li>
+                        <li>6-hour rush turnaround</li>
+                        <li>Dedicated account manager</li>
+                        <li>API access for integration</li>
+                        <li>White-label options available</li>
+                        <li>Franchise/multi-location ready</li>
+                    </ul>
+                    <a href="mailto:droxai25@outlook.com?subject=Scale Plan Inquiry&body=Hi, I'd like to learn more about the Scale Plan.%0D%0A%0D%0ABusiness Name:%0D%0ANumber of Locations:%0D%0AMonthly Review Volume:%0D%0AYour Name:%0D%0AEmail:%0D%0APhone:" 
+                       class="cta-button" style="background:#4f46e5;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p style="font-size:1.1rem;margin-bottom:15px">&copy; 2025 DroxAI LLC. All rights reserved.</p>
+        <p>
+            <a href="/privacy.html">Privacy Policy</a>
+            <a href="/terms.html">Terms of Service</a>
+            <a href="/refund.html">Refund Policy</a>
+        </p>
+        <p style="margin-top:20px;opacity:0.8">
+            Questions? Email us: <a href="mailto:droxai25@outlook.com">droxai25@outlook.com</a>
+        </p>
+    </footer>
+</body>
+</html>
