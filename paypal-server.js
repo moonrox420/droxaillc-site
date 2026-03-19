@@ -22,9 +22,9 @@ const CONFIG = {
   clientSecret: 'ELJhLqZqpnQPKUl_97B1c2RPaE2xyxAiRHZK-taS4WToch1R9wk2O0hOVe7N1ObT5AosOZgygAkkIv15',
   webhookId: '532141196V6420303',
   
-  // PayPal API URLs (LIVE)
-  baseUrl: 'https://api-m.paypal.com',
-  // For sandbox testing, use: 'https://api-m.sandbox.paypal.com'
+  // PayPal API URLs (SANDBOX)
+  baseUrl: 'https://api-m.sandbox.paypal.com',
+  // For live production, use: 'https://api-m.paypal.com'
   
   // Server
   port: 3000,

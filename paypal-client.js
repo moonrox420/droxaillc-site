@@ -204,7 +204,7 @@ async function initializePayPalButtons(productId) {
 function loadPayPalScript() {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `https://www.paypal.com/sdk/js?client-id=${PAYPAL_CONFIG.clientId}&currency=${PAYPAL_CONFIG.currency}`;
+    script.src = `https://www.sandbox.paypal.com/sdk/js?client-id=${PAYPAL_CONFIG.clientId}&currency=${PAYPAL_CONFIG.currency}`;
     script.onload = resolve;
     script.onerror = reject;
     document.head.appendChild(script);
