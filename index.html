@@ -392,6 +392,7 @@
  }
  }
  </style>
+<script src="paypal-client.js"></script>
 </head>
 <body>
  <div class="hero">
@@ -605,9 +606,9 @@
  <li>Quarterly updates</li>
  <li>Self-hosted deployment</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - Starter Plan" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('review-reply-starter')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Get Started
- </a>
+ </button>
  </div>
  
  <div class="price-card featured">
@@ -625,9 +626,9 @@
  <li>White-label options</li>
  <li>API access</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - Business Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('review-reply-business')" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Choose Business
- </a>
+ </button>
  </div>
  
  <div class="price-card">
@@ -644,9 +645,9 @@
  <li>Full white-label rights</li>
  <li>Custom integrations</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Enterprise Plan Inquiry" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('review-reply-enterprise')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Contact Sales
- </a>
+ </button>
  </div>
  </div>
  </div>
@@ -668,9 +669,9 @@
  <li>Email support</li>
  <li>Quarterly updates</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - TOAD Solo Plan" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('toad-solo')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Get Started
- </a>
+ </button>
  </div>
  
  <div class="price-card featured">
@@ -688,9 +689,9 @@
  <li>Monthly updates</li>
  <li>Custom model training</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - TOAD Team Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('toad-team')" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Choose Team
- </a>
+ </button>
  </div>
  
  <div class="price-card">
@@ -707,9 +708,9 @@
  <li>Custom model training</li>
  <li>API access</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=TOAD Enterprise Plan Inquiry" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('toad-enterprise')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Contact Sales
- </a>
+ </button>
  </div>
  </div>
  </div>
@@ -731,9 +732,9 @@
  <li>Email support</li>
  <li>Quarterly updates</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - DroxCLI Individual Plan" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('droxcli-individual')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Get Started
- </a>
+ </button>
  </div>
  
  <div class="price-card featured">
@@ -751,9 +752,9 @@
  <li>Monthly updates</li>
  <li>Shared command history</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - DroxCLI Team Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('droxcli-team')" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Choose Team
- </a>
+ </button>
  </div>
  
  <div class="price-card">
@@ -770,9 +771,9 @@
  <li>Weekly updates</li>
  <li>Custom LLM support</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=DroxCLI Enterprise Inquiry" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('droxcli-enterprise')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Contact Sales
- </a>
+ </button>
  </div>
  </div>
  </div>
@@ -794,9 +795,9 @@
  <li>Email support</li>
  <li>Quarterly updates</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - ProConstruct Trade Pro" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('proconstruct-trade')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Get Started
- </a>
+ </button>
  </div>
  
  <div class="price-card featured">
@@ -814,9 +815,9 @@
  <li>Monthly updates</li>
  <li>Mobile app access</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - ProConstruct Crew Plan" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('proconstruct-crew')" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Choose Crew
- </a>
+ </button>
  </div>
  
  <div class="price-card">
@@ -833,9 +834,9 @@
  <li>Weekly updates</li>
  <li>API access</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=ProConstruct Enterprise Inquiry" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('proconstruct-enterprise')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Contact Sales
- </a>
+ </button>
  </div>
  </div>
  </div>
@@ -857,9 +858,9 @@
  <li>Email support</li>
  <li>Quarterly updates</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - AutoCampaigns Starter" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('autocampaigns-starter')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Get Started
- </a>
+ </button>
  </div>
  
  <div class="price-card featured">
@@ -877,9 +878,9 @@
  <li>Monthly updates</li>
  <li>Social scheduling</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=Sign Up - AutoCampaigns Growth" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('autocampaigns-growth')" class="cta-button" style="margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Choose Growth
- </a>
+ </button>
  </div>
  
  <div class="price-card">
@@ -896,9 +897,9 @@
  <li>Weekly updates</li>
  <li>API access</li>
  </ul>
- <a href="mailto:droxai25@outlook.com?subject=AutoCampaigns Agency Inquiry" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem">
+ <button onclick="showCheckoutModal('autocampaigns-agency')" class="cta-button" style="background:#667eea;color:white;margin-top:20px;padding:12px 30px;font-size:1rem;cursor:pointer;border:none;">
  Contact Sales
- </a>
+ </button>
  </div>
  </div>
  </div>

@@ -1,0 +1,18 @@
+{
+  "name": "droxai-payment-portal",
+  "version": "1.0.0",
+  "description": "DroxAI PayPal Payment Portal with automatic product delivery",
+  "main": "paypal-server.js",
+  "scripts": {
+    "start": "node paypal-server.js",
+    "dev": "node paypal-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "nodemailer": "^6.9.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
