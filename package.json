@@ -8,9 +8,10 @@
     "dev": "node paypal-server.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
     "axios": "^1.6.0",
-    "nodemailer": "^6.9.7"
+    "dotenv": "^17.3.1",
+    "express": "^4.18.2",
+    "nodemailer": "^8.0.3"
   },
   "engines": {
     "node": ">=16.0.0"

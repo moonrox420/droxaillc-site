@@ -9,28 +9,32 @@ const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
+
+// Serve static files (HTML, CSS, JS, images, etc.)
+app.use(express.static(__dirname));
 
 // ============================================
 // CONFIGURATION
 // ============================================
 const CONFIG = {
-  // PayPal credentials (LIVE)
-  clientId: 'AbYS_oR6J0qO_epWRgxDJpMGOwBCGbvZ9UaePb8FTgQmx9Dnlakd0ajMZV119iLyEx3gsjYuiTK1uP-N',
-  clientSecret: 'ELJhLqZqpnQPKUl_97B1c2RPaE2xyxAiRHZK-taS4WToch1R9wk2O0hOVe7N1ObT5AosOZgygAkkIv15',
-  webhookId: '532141196V6420303',
+  // PayPal credentials (from .env)
+  clientId: process.env.PAYPAL_CLIENT_ID,
+  clientSecret: process.env.PAYPAL_CLIENT_SECRET,
+  webhookId: process.env.PAYPAL_WEBHOOK_ID,
   
   // PayPal API URLs (PRODUCTION)
   baseUrl: 'https://api-m.paypal.com',
   // For sandbox testing, use: 'https://api-m.sandbox.paypal.com'
   
   // Server
-  port: 3000,
+  port: process.env.PORT || 3000,
   
   // Site URL
-  siteUrl: 'https://droxaillc.com',
+  siteUrl: process.env.SITE_URL || 'https://droxaillc.com',
   
   // Email configuration (configure these)
   email: {
